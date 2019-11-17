@@ -1,11 +1,13 @@
 public class Task1_3 {
-    static float circleSquare(float radius)
+    static double ringArea(double innerRadius, double outerRadius)
     {
-        return (float) (Math.PI * radius * radius);
+        double S1 = innerRadius * innerRadius;
+        double S2 = outerRadius * outerRadius;
+        return Math.PI * (S2 > S1 ? S2 - S1 : 0);
     }
     public static void main(String args[])
     {
-        float R1 = 50, R2 = 35;
-        System.out.print(R1 > R2 ? circleSquare(R1)-circleSquare(R2) : 0);
+        double R1 = 50, R2 = 35;
+        System.out.println(ringArea(R2, R1));
     }
 }
