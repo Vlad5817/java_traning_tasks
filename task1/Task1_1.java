@@ -1,10 +1,10 @@
 public class Task1_1 {
-    public static boolean compareNumbers( Number a, Number b, Number c)
+    static boolean allEqual( Number a, Number b, Number c)
     {
-        return a == b && a == c && b == c;
+        return a == b && a == c;
     }
     public static void main(String args[])
     {
-        System.out.println(compareNumbers(1,2,3));
+        System.out.println(allEqual(1,2,3));
     }
 }
