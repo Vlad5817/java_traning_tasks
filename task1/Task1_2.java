@@ -1,14 +1,15 @@
 public class Task1_2 {
-    static void printWeight(double weight)
+    static String formatWeight(double weight)
     {
-        int tones = (int)weight / 1000,
-                kilos =  (int) (weight % 1000),
-                grams = (int) (weight % 1 * 1000);
-        float miligrams = (int) (weight * 1_000_000 % 1000);
-        System.out.printf("%d тонн, %d киллограмм, %d грамм, %f милиграмм", tones, kilos, grams, miligrams);
+		long miligrams = (long) (weight * 1000000);
+		long grams = miligrams / 1000;
+        long kilos = grams / 1000;
+        long tones = kilos / 1000;
+        return String.format("%d тонн, %d киллограмм, %d грамм, %d милиграмм",
+        		tones, kilos%1000, grams%1000, miligrams%1000);
     }
     public static void main(String args[])
     {
-        printWeight(54321.12345);
+        System.out.println(formatWeight(654321.123456));
     }
 }
