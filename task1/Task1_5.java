@@ -3,11 +3,13 @@ public class Task1_5 {
     public static void main(String args[])
     {
         int N = 654321;
-        float avg = 0, geomAvg = 1;
+        float arithmeticMean = 0, geometricMean = 1;
         for (int i = 0; i < 6; i++) {
-            avg += Task1_4.getDigit(N, i) / 6.;
-            geomAvg *= Math.pow(Task1_4.getDigit(N, i), 1/6.);
+            arithmeticMean += N % 10 / 6.;
+            geometricMean *= Math.pow(N % 10, 1./6.);
+            N /= 10;
         }
-        System.out.printf("среднее арифметическое: %f\nсреднее геометрическое: %f", avg, geomAvg);
+        System.out.println("среднее арифметическое: " + arithmeticMean);
+        System.out.println("среднее геометрическое: " + geometricMean);
     }
 }
