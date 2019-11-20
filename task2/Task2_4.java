@@ -1,12 +1,13 @@
-class Date
-{
+class Date {
     public static int[] MONTH_LENGTHS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     private int day, month, year;
+
     public Date(int day, int month, int year) {
         this.day = day - 1;
         this.month = month - 1;
         this.year = year - 1;
     }
+
     public boolean isLeapYear() {
         boolean isLeapYear = false;
         isLeapYear ^= (year + 1) % 4 == 0;
@@ -14,19 +15,16 @@ class Date
         isLeapYear ^= (year + 1) % 400 == 0;
         return isLeapYear;
     }
-    public void incDay()
-    {
+
+    public void incDay() {
         int month_length = MONTH_LENGTHS[month];
         if (month == 1 && isLeapYear())
             month_length ++;
-        if (day + 1 < month_length)
-            day++;
-        else {
-            year = year + month / 11;
-            month = (month + 1) % 12;
-            day = 0;
-        }
+        year = year + month / 11;
+        month = (month + day / (month_length - 1)) % 12;
+        day = (day + 1) % month_length;
     }
+
     public String toString() {
         return String.format("%02d.%02d.%04d", day + 1, month + 1, year + 1);
     }
