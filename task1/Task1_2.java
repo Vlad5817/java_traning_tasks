@@ -1,6 +1,5 @@
 public class Task1_2 {
-    static String formatWeight(double weight)
-    {
+    static String formatWeight(double weight) {
         assert weight > 0;
         long miligrams = (long) (weight * 1000000);
         long grams = miligrams / 1000;
@@ -9,8 +8,7 @@ public class Task1_2 {
         return String.format("%d тонн, %d киллограмм, %d грамм, %d милиграмм",
                 tones, kilos%1000, grams%1000, miligrams%1000);
     }
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         System.out.println(formatWeight(654321.123456));
     }
 }

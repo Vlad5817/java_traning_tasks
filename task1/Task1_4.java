@@ -1,13 +1,12 @@
 public class Task1_4 {
-    static int getDigit(int number, int position) {
-        return (number / (int)Math.pow(10, position)) % 10;
-    }
     public static void main(String args[]) {
-        int N = 7531;
+        int N = 1234;
         boolean increasing = true, decreasing = true;
-        for (int i = 0; i < 3; i++) {
-            increasing &= getDigit(N, i) > getDigit(N, i + 1);
-            decreasing &= getDigit(N, i) < getDigit(N, i + 1);
+        int next_digit = N % 10; N /= 10;
+        while (N > 0) {
+            int cur_digit = N % 10; N /= 10;
+            increasing &= next_digit > cur_digit;
+            decreasing &= next_digit < cur_digit;
             if (!increasing && !decreasing) break;
         }
         if (increasing)

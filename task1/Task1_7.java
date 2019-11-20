@@ -4,6 +4,7 @@ public class Task1_7 {
         a = a ^ b;
         b = a ^ b;
         a = a ^ b;
-        System.out.printf("a = %d\nb = %d", a, b);
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
     }
 }
