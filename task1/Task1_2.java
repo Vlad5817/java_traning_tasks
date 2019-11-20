@@ -1,6 +1,7 @@
 public class Task1_2 {
     static String formatWeight(double weight)
     {
+        assert weight > 0;
         long miligrams = (long) (weight * 1000000);
         long grams = miligrams / 1000;
         long kilos = grams / 1000;
