@@ -1,44 +1,42 @@
 class Date
 {
-    public static int[] MONTHS_LENGTH = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    private int day = 31, month = 12, year = 1;
-    public Date(int day, int month, int year)
-    {
-        this.day = day;
-        this.month = month;
-        this.year = year;
+    public static int[] MONTH_LENGTHS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    private int day, month, year;
+    public Date(int day, int month, int year) {
+        this.day = day - 1;
+        this.month = month - 1;
+        this.year = year - 1;
     }
-    public boolean isLeapYear()
-    {
-        return (year % 4 == 0 && (year % 100 != 0 || year%400 == 0 && year % 100 == 0 ));
+    public boolean isLeapYear() {
+        boolean isLeapYear = false;
+        isLeapYear ^= (year + 1) % 4 == 0;
+        isLeapYear ^= (year + 1) % 100 == 0;
+        isLeapYear ^= (year + 1) % 400 == 0;
+        return isLeapYear;
     }
     public void incDay()
     {
-        if (day < MONTHS_LENGTH[month - 1]) {
+        int month_length = MONTH_LENGTHS[month];
+        if (month == 1 && isLeapYear())
+            month_length ++;
+        if (day + 1 < month_length)
             day++;
-        } else if (isLeapYear() && month == 2 && day < 1 + MONTHS_LENGTH[month]) {
-            day++;
-        } else {
-            day = 1;
-            if (month < 12)
-                month++;
-            else{
-                month = 1;
-                year++;
-            }
+        else {
+            year = year + month / 11;
+            month = (month + 1) % 12;
+            day = 0;
         }
     }
     public String toString() {
-        return String.format("%d.%d.%d", day, month, year);
+        return String.format("%02d.%02d.%04d", day + 1, month + 1, year + 1);
     }
 }
-public class Tack2_4 {
 
+public class Task2_4 {
     public static void main(String[] args) {
-        int day = 31, month = 12, year = 1;
         Date d = new Date(31, 12, 156);
         System.out.println(d);
         d.incDay();
-        System.out.print(d);
+        System.out.println(d);
     }
 }
